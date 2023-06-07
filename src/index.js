@@ -16,6 +16,6 @@ mongoose.connect(process.env.DATABASE, {
 
 app.use("/", route)
 
-app.listen(process.env.PORT || 5000, function () {
-    console.log("Express app running on port 5000")
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Express app running on port 3000")
 })
