@@ -1,27 +1,33 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const taskData = mongoose.Schema({
+const taskData = mongoose.Schema(
+  {
+    UserId: {
+      type: ObjectId,
+      require: true,
+      ref: "User",
+    },
     title: {
-        type: String,
-        require: true,
-        trim: true,
-      },
-      description:{
-          type: String,
-          require: true,
-          trim: true
-      },
-      panding:{
-        type: String,
-        require: true,
-        enum: ["yes", "No"]
-      },
-      completed:{
-        type: String,
-        require: true,
-        enum: ["yes", "No"]
-      }
+      type: String,
+      require: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      require: true,
+      trim: true,
+    },
+    panding: {
+      type: String,
+      enum: ["Yes", "No"],
+    },
+    completed: {
+      type: String,
+      enum: ["Yes", "No"],
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps: true })
-
-module.exports = mongoose.module("task",taskData)
+module.exports = mongoose.model("task", taskData);

@@ -94,7 +94,7 @@ const userLogin = async function (req, res) {
       },
       "very-very-secret-key"
     );
-    res.setHeader("auth-api-key", token);
+    res.setHeader("x-api-key", token);
     res.send({ status: true, token: token });
 
   } catch (err) {
